@@ -1,0 +1,4 @@
+This is a very simple user login service that I created; I planned to use it for my horse racing system in the future.
+I am experimenting with microservices architecture and this is probably not what the industry would use in production.
+I have passport-local as my authentication strategy and I have postgres to store my user data and also sessions. After the user
+is authenticated a JWT would be issued and further requests to other part of the APIs would utilize the JWT for authentication purposes. Again this is a very basic implementation (there are plenty of potential security risk). I plan to fill in the gap gradually (and also the documentation ;( ). 
