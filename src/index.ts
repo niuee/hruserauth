@@ -95,10 +95,9 @@ app.post("/register", async (req, res)=>{
 });
 
 app.post("/login", passport.authenticate("local", {failureRedirect: "/login"}), (req, res) => {
-    const token = jwt.sign({ ...req.user}, 'your_jwt_secret');
+    const token = jwt.sign({ ...req.user}, 'your_jwt_secret', {expiresIn:  '24h'});
       // Send token back to client
-    res.set('Set-Cookie', `Bearer ${token}`);
-    res.status(200).json({msg: "suncess",  user: req.user});
+    res.status(200).json({msg: "sucess",  user: req.user, token: token});
 });
 
 app.get("/logout", (req, res) => {
@@ -118,6 +117,7 @@ app.get("/profile", (req, res) => {
         jwt.verify(token, 'your_jwt_secret', (err, user) => {
             if (err) {
                 // Return authentication failure
+                console.log(err);
                 return res.status(403).json({msg: "Unauthorized"});
             }
             res.status(200).json({msg: "sucess", user: user});

@@ -3,7 +3,8 @@ services:
     image: postgres
     container_name: test_postgres2
     networks:
-      - dbnetwork
+      dbnetwork:
+        ipv4_address: 192.168.1.1
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD= password
