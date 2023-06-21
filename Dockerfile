@@ -4,6 +4,7 @@ WORKDIR /home/node/app
 COPY . /home/node/app/
 RUN npm install
 RUN npm run build
+RUN ./cert.sh
 EXPOSE ${PORT}
 ENV CMD_PORT ${PORT}
 CMD npm start $CMD_PORT
