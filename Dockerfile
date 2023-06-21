@@ -5,4 +5,4 @@ COPY . /home/node/app/
 RUN npm install
 RUN npm run build
 EXPOSE $EXPOSE_PORT
-CMD npm start ${EXPORE_PORT}
+CMD npm start -- ${EXPORE_PORT}
