@@ -153,9 +153,11 @@ app.get("/validateJWT", (req, res) => {
 });
 
 
+let serverPort = process.argv[2] || "9999";
+console.log("PORT:", serverPort);
 https.createServer({
   key: fs.readFileSync(path.resolve(__dirname, './my-service.key')),
   cert: fs.readFileSync(path.resolve(__dirname, './my-service.crt')),
-}, app).listen(9999, '0.0.0.0', () => {
+}, app).listen(parseInt(serverPort), '0.0.0.0', () => {
   console.log('Listening...')
 });
